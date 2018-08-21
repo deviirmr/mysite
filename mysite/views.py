@@ -7,6 +7,7 @@ from django.shortcuts import render
 
 def hello(request):
     return HttpResponse ("Hello world")
+
 def current_datetime(request):
     now =datetime.datetime.now()
     html = "<html><body>%s<body/><html/>" % now
@@ -68,6 +69,10 @@ def get_wms_viz(requets):
     f = requests.get(url)
     html = "<html><body>%s<body/><html/>" % f.text
     return  HttpResponse(html)
+
+def current_url_view_good(request):
+    print("Comments######### " + str(request.META))
+    return HttpResponse("Welcome to the page at %s" % request.META)
 
 
 
