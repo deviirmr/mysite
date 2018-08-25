@@ -4,6 +4,11 @@ import  datetime, requests
 from django.template.loader import get_template
 from django.template import Template,Context
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from mysite.forms import ContactForm
+from django.core.mail import send_mail
+
+
 
 def hello(request):
     return HttpResponse ("Hello world")
@@ -74,5 +79,17 @@ def current_url_view_good(request):
     print("Comments######### " + str(request.META))
     return HttpResponse("Welcome to the page at %s" % request.META)
 
-
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            send_mail(
+            cd['subject'],
+            cd['message'],
+            cd.get('email', 'noreply@example.com'),['siteowner@example.com'],)
+            return HttpResponseRedirect('/contact/thanks/')
+    else:
+        form = ContactForm()
+    return render(request, 'contact_form.html', {'form': form})
 

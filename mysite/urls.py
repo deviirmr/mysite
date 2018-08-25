@@ -14,8 +14,8 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from mysite.views import hello,current_datetime, hours_ahead,get_wms_viz,current_datetime2,current_datetime3,current_datetime4,current_datetime5,current_datetime6,current_datetime7,hours_ahead2,current_url_view_good
-
+from mysite.views import hello,current_datetime, hours_ahead,get_wms_viz,current_datetime2,current_datetime3,current_datetime4,current_datetime5,current_datetime6,current_datetime7,hours_ahead2,current_url_view_good,contact
+from books import views
 
 
 urlpatterns = [
@@ -32,5 +32,13 @@ urlpatterns = [
     url(r'^time/pluss/(\d{1,2})/$', hours_ahead2),
     url(r'^viz/$', get_wms_viz),
     url(r'^weburl/$', current_url_view_good),
+    url(r'^search-form/$', views.search_form),
+    url(r'^search/$', views.search),
+    url(r'^search2/$', views.search2),
+    url(r'^search3/$', views.search3),
+    url(r'^search4/$', views.search4),
+    url(r'^search-form2/$', views.search_form2),
+    url(r'^search-form3/$', views.search_form3),
+    url(r'^contact/$', contact)
 
 ]

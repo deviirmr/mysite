@@ -49,6 +49,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.core.mail.backends.smtp.EmailBackend'
 )
 
 ROOT_URLCONF = 'mysite.urls'
@@ -107,3 +108,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#email backend
+#For email
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'devrsgis@gmail.com'
+# EMAIL_HOST_PASSWORD = 'fppyywvlsshdqqiv'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.grida.no'
+EMAIL_HOST_USER = 'debhasish.bhakta@grida.no'
+EMAIL_HOST_PASSWORD = 'bhaktA1!'
+EMAIL_PORT = 25
+EMAIL_USE_TLS = True
